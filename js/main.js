@@ -188,16 +188,50 @@ document.addEventListener("DOMContentLoaded", function() {
 
         const bmi = weight / ((height / 100) ** 2);
 
+        const ageInput = document.getElementById("ageInput");
+        const sex = document.getElementById("sexInput").value;
+
         let resultMessage = `Your BMI is ${bmi.toFixed(2)}.`;
 
-        const age = document.getElementById("ageInput").value;
-        const sex = document.getElementById("sexInput").value;
-        
-        if (age && sex) {
-            resultMessage += ` Age: ${age}, Sex: ${sex}.`;
+        const age = parseInt(ageInput.value);
+        if (isNaN(age)) {
+            alert("Please enter a valid age.");
+            ageInput.value = ""; // Clear the invalid input
+            ageInput.focus();    // Put focus back on the age input
+            return;
+        }
+
+        if (!sex) {
+            alert("Please select a sex.");
+            return;
+        }
+
+        let weightStatus = "";
+
+        if (bmi < 18.5) {
+            weightStatus = "Underweight";
+        } else if (bmi >= 18.5 && bmi < 25.0) {
+            weightStatus = "Healthy";
+        } else if (bmi >= 25.0 && bmi < 30.0) {
+            weightStatus = "Overweight";
+        } else {
+            weightStatus = "Obese";
+        }
+
+        const tableRows = document.querySelectorAll(".chart-table tbody tr");
+        tableRows.forEach(row => {
+            row.classList.remove("active");
+        });
+
+        const statusRow = document.getElementById(weightStatus);
+        if (statusRow) {
+            statusRow.classList.add("active");
         }
 
         const resultElement = document.getElementById("result");
-        resultElement.textContent = resultMessage;
+        resultMessage += ` Weight Status: ${weightStatus}.`;
+        resultElement.value = resultMessage;
+
+        resultElement.style.display = "block";
     }
 });

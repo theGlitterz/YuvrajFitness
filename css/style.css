@@ -1981,6 +1981,9 @@ ol {
 	text-align: left;
 }
 
+
+
+
 .chart-table table {
 	border: 1px solid #363636;
 	width: 100%;
@@ -2000,8 +2003,12 @@ ol {
 	padding: 14px 0 11px 50px;
 }
 
-.chart-table table tbody tr:nth-child(even) {
-	background: #111111;
+.chart-table tr.active {
+	background-color: #ed3237;
+}
+
+.chart-table tr:hover {
+	background-color: #ed3237;
 }
 
 .chart-table table tbody tr td {
@@ -2036,6 +2043,56 @@ ol {
 	margin-bottom: 20px;
 }
 
+.chart-calculate-form form select {
+	font-size: 14px;
+	color: #c4c4c4;
+	width: 100%;
+	height: 50px;
+	border: 1px solid #363636;
+	padding-left: 20px;
+	padding-right: 5px;
+	background: transparent;
+	margin-bottom: 20px;
+}
+
+select#sexInput::-ms-expand {
+    display: none;
+}
+
+select#sexInput::after {
+    content: "\25BC"; /* Unicode character for a downward arrow */
+    font-size: 14px;
+	color: black;
+	width: 100%;
+	height: 50px;
+	border: 1px solid #363636;
+	padding-left: 20px;
+	padding-right: 5px;
+	background: transparent;
+	margin-bottom: 20px;
+}
+
+.chart-calculate-form form select::-webkit-select-placeholder {
+	color: #c4c4c4;
+}
+
+.chart-calculate-form form select::-moz-placeholder {
+	color: #c4c4c4;
+}
+
+.chart-calculate-form form select:-ms-select-placeholder {
+	color: #c4c4c4;
+}
+
+.chart-calculate-form form select::-ms-select-placeholder {
+	color: #c4c4c4;
+}
+
+.chart-calculate-form form select::placeholder {
+	color: #c4c4c4;
+}
+
+
 .chart-calculate-form form input::-webkit-input-placeholder {
 	color: #c4c4c4;
 }
@@ -2065,6 +2122,7 @@ ol {
 	border: none;
 	padding: 15px 0;
 	background: #ed3237;
+	margin-bottom: 20px;
 }
 
 /*---------------------
