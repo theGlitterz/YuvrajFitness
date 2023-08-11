@@ -172,3 +172,32 @@
     });
 
 })(jQuery);
+
+document.addEventListener("DOMContentLoaded", function() {
+    const calculateButton = document.getElementById("calculateButton");
+    calculateButton.addEventListener("click", calculateBMI);
+
+    function calculateBMI() {
+        const height = parseFloat(document.getElementById("heightInput").value);
+        const weight = parseFloat(document.getElementById("weightInput").value);
+
+        if (isNaN(height) || isNaN(weight)) {
+            alert("Please enter valid height and weight values.");
+            return;
+        }
+
+        const bmi = weight / ((height / 100) ** 2);
+
+        let resultMessage = `Your BMI is ${bmi.toFixed(2)}.`;
+
+        const age = document.getElementById("ageInput").value;
+        const sex = document.getElementById("sexInput").value;
+        
+        if (age && sex) {
+            resultMessage += ` Age: ${age}, Sex: ${sex}.`;
+        }
+
+        const resultElement = document.getElementById("result");
+        resultElement.textContent = resultMessage;
+    }
+});
